@@ -131,7 +131,7 @@ class NPoW {
                 });
                 resolve(res);
             } else {
-                console.log("❌ This worker didn't find a solution. Match: ", res.match);
+              //  console.log("❌ This worker didn't find a solution. Match: ", res.match);
                 reject("No solution found");
             }
         };
@@ -150,7 +150,7 @@ class NPoW {
     async Solve() {
         let numWorkers = navigator.hardwareConcurrency || 2;
         numWorkers = Math.min(numWorkers, 16);
-        console.log(`🤔 Starting solve with ${numWorkers} workers`)
+       // console.log(`🤔 Starting solve with ${numWorkers} workers`)
         const divided = this.numeric ? Math.ceil(this.difficulty / numWorkers) : Math.ceil(Math.pow(16, this.difficulty) / numWorkers);
         const workers = [];
 
@@ -168,11 +168,11 @@ class NPoW {
             const startDate = new Date();
             const result = await Promise.any(workers);
             const endDate = new Date();
-            console.log("🥳 h", result);
-            console.log("Solved In:", (endDate.getTime() - startDate.getTime()) / 1000);
+           // console.log("🥳 h", result);
+           // console.log("Solved In:", (endDate.getTime() - startDate.getTime()) / 1000);
             return result;
         } catch (e) {
-            console.log("🕵️ Something's wrong", e);
+           // console.log("🕵️ Something's wrong", e);
             return null;
         }
     }
